@@ -2,7 +2,7 @@ let bigData = [];
 let tbody = document.getElementById("tbody");
 
 fetch(
-  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=30&sparkline=false"
+  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h"
 )
   .then((response) => response.json())
   .then((data) => {
@@ -20,8 +20,12 @@ function displayItem(data, id) {
       <th scope="row">${id}</th>
       <td>
       <image width="30" src="${data.image}"/>
-      ${data.name}</td>
-      <td>${data.current_price} USD </td>`;
+    <b>${data.name}</b> <span>${data.symbol}</span>
+      </td>
+      <td>${data.market_cap}</td>
+      <td>$${data.current_price}</td>
+      
+      `;
 
   tbody.appendChild(table);
 }
